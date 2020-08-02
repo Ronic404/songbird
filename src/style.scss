@@ -1,14 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 10px;
-}
-
-#root {
-  padding: 0 100px;
-  background-color: darkslategray;
-}
-
+@import './scss/base';
+@import './scss/header';
+@import './scss/question-block';
+@import './scss/answers-block';
+@import './scss/button';

@@ -1,0 +1,84 @@
+.answers-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  >* {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 50%;
+  }
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: column;  
+  cursor: pointer; 
+  overflow: hidden; 
+  margin-right: 20px;
+
+  &__item {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);      
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &-marker {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin-right: 10px;
+    }
+
+    &-name {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.bird-description {
+  padding: 10px;
+
+  &__top {
+    display: flex;
+
+    &-image {
+      width: 230px;
+      height: 180px;
+      margin-right: 20px;
+    }
+
+    &-subdescription {
+      width: 100%;
+
+      &-name {
+        font-size: 2rem;
+        padding: 10px 0;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      &-species {
+        font-size: 1.5rem;
+        padding: 5px 0;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      &-audio {
+        width: 100px;
+      }
+    }
+  }
+
+  &__bottom {
+    font-size: 1.5rem;
+  }
+}

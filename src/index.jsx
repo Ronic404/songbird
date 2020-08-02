@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 
-import Header from './components/Header/Header';
-import QuestionBlock from './components/QuestionBlock/QuestionBlock';
-import AnswerBlock from './components/AnswerBlock/AnswerBlock';
+import Header from './js/components/Header/Header';
+import QuestionBlock from './js/components/QuestionBlock/QuestionBlock';
+import AnswerBlock from './js/components/AnswerBlock/AnswerBlock';
 
 import './style.scss';
 
@@ -18,7 +18,7 @@ function App() {
       <Header />
       <QuestionBlock />
       <AnswerBlock />
-      <button className="nextLevel" type="button">Next Level</button>
+      <button className="button-next-level" type="button">Next Level</button>
     </>
   );
 }

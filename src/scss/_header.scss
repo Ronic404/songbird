@@ -1,0 +1,42 @@
+.header {
+  padding: 20px 0;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+
+  &-logo {
+    width: 200px;
+  }
+
+  &-score {
+    font-size: 2rem;
+    
+    display: flex;
+    align-items: center;
+  }
+}
+
+.family-of-birds-list {
+  display: flex;
+  justify-content: space-between; 
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+
+  &__item {
+    background-color:#009d76;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5px;
+
+    &_active {
+      background-color:#02dda6;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.question-block {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  display: flex;
+  padding: 10px;
+
+  >* {
+    margin-right: 20px;
+  }
+
+  &__image {
+    width: 230px;
+    height: 180px;
+  }
+
+  &__description {
+    flex: 1;
+
+    &-title {
+      font-size: 2.5rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    &-audio {
+      width: 100%;
+    }
+  }  
+}

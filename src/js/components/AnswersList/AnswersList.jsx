@@ -7,10 +7,13 @@ function getBirdsList() {
 
 export default function AnswersList() {
   const list = getBirdsList().map(bird => 
-    <li key={bird.id}>{bird.name}</li>
+    <li className="answers-list__item" key={bird.id}>
+      <div className="answers-list__item-marker" />
+      <div className="answers-list__item-name">{bird.name}</div>      
+    </li>
   )
 
   return (
-    <ul className="answersList">{list}</ul>
+    <ul className="answers-list">{list}</ul>
   )
 }
