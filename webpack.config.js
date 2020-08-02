@@ -76,7 +76,7 @@ const config = (env) => ({
     ],
   },
   resolve: {
-    extensions: ['.js', 'jsx'],
+    extensions: ['.js', '.jsx'],
   },
   devServer: {
     contentBase: './dist',
