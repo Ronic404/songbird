@@ -1,11 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import AnswersList from '../AnswersList/AnswersList';
 import BirdDescription from '../BirdDescription/BirdDescription'
 
-export default function AnswerBlock() {
+export default function AnswerBlock(props) {
+  const { page } = props;
+
   return (
     <div className="answers-block">
-      <AnswersList />
+      <AnswersList page={page}/>
       <BirdDescription />
     </div>
   );

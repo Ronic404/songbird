@@ -1,12 +1,12 @@
 import React from 'react';
-import birdsData from '../../data/birdsData';
+import bird from '../../../assets/images/bird.png'
 
 export default function QuestionBlock() {
   return (
     <div className="question-block"> 
-      <img className="question-block__image" src={birdsData[0].image} alt="qweqwe" />
+      <img className="question-block__image" src={bird} alt="qweqwe" />
       <div className="question-block__description">
-        <h2 className="question-block__description-title">Ястреб</h2>
+        <h2 className="question-block__description-title">******</h2>
         <audio className="question-block__description-audio" controls>
           <track kind="captions" />
         </audio>
