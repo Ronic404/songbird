@@ -1,8 +1,8 @@
-/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
+// import birdsData from './js/data/birdsData';
 
 import Header from './js/components/Header/Header';
 import QuestionBlock from './js/components/QuestionBlock/QuestionBlock';
@@ -20,21 +20,35 @@ class App extends React.Component {
     this.state = {
       page: 0,
       score: 0,
+      points: 5,
     }
     this.setNextPage = this.setNextPage.bind(this);
   }
 
-
   setNextPage() {
-    if (this.state.page === 5) {
+    const { page } = this.state;
+
+    if (page === 5) {
       this.setState({ page: 0});
     } else {
-      this.setState({ page: this.state.page + 1});
+      this.setState({ page: page + 1});
     }
+
+    this.addPoints();
+  }
+
+  addPoints() {
+    this.setState(prevState => ({
+      score: prevState.score + prevState.points
+    }));
   }
 
   render() {
-    const { page, score } = this.state
+    const { page, score } = this.state;
+    // function nameBird() {
+    //   return birdsData[this.state.page][Math.floor(Math.random() * birdsData[this.state.page].length)]
+    // }
+    // console.log(nameBird())
     return (
       <>
         <Header page={page} score={score} />
