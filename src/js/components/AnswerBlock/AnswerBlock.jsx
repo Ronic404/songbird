@@ -4,11 +4,11 @@ import AnswersList from '../AnswersList/AnswersList';
 import BirdDescription from '../BirdDescription/BirdDescription'
 
 export default function AnswerBlock(props) {
-  const { page } = props;
+  const { page, randomIndex, setRight } = props;
 
   return (
     <div className="answers-block">
-      <AnswersList page={page}/>
+      <AnswersList page={page} randomIndex={randomIndex} setRight={setRight} />
       <BirdDescription />
     </div>
   );

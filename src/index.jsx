@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/no-access-state-in-setstate */
 import React from 'react';
@@ -23,9 +24,10 @@ class App extends React.Component {
       points: 5,
       page: 0,
       randomIndex: 0,
+      isRight: false,
     }
-    this.setNextPage = this.setNextPage.bind(this);
-    
+    this.setNextPage = this.setNextPage.bind(this);    
+    this.setRight = this.setRight.bind(this);    
   }
 
   componentDidMount() {
@@ -39,14 +41,19 @@ class App extends React.Component {
   //   }  
   // }
 
+  setRight() {
+    const { isRight } = this.state;
+    this.setState({ isRight: true });
+  }
+
   setNextPage() {
-    const { page } = this.state;
+    const { page, isRight } = this.state;
     this.addPoints();
     if (page === 5) {
       this.setState({ page: 0});
       this.setState({ score: 0});
     } else {
-      this.setState({ page: page + 1});
+      this.setState({ page: page + 1, isRight: false});
     }
   }
 
@@ -57,14 +64,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { page, score, randomIndex } = this.state;
+    const { page, score, randomIndex, isRight } = this.state;
     window.console.log(randomIndex)
     return (
       <>
         <Header page={page} score={score} />
         <QuestionBlock page={page} randomIndex={randomIndex} />
-        <AnswerBlock page={page} randomIndex={randomIndex} />
-        <Button onClick={this.setNextPage} />
+        <AnswerBlock page={page} randomIndex={randomIndex} setRight={this.setRight} />
+        <Button onClick={this.setNextPage} isRight={isRight} />
       </>
     );
   }  
