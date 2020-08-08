@@ -9,14 +9,14 @@ function getBirdsList(page) {
 }
 
 export default function AnswersList(props) {
-  const { page, randomIndex, setRight } = props;  
+  const { page, randomIndex, setRight, decreasePoints } = props;  
   const list = getBirdsList(page).map(bird => 
     <li className="answers-list__item" key={bird.id}>
       <div className="answers-list__item-marker" />
       <div className="answers-list__item-name">{bird.name}</div>      
     </li>
   )
-  chooseRightOption(page, randomIndex, setRight);
+  chooseRightOption(page, randomIndex, setRight, decreasePoints);
   return (
     <ul className="answers-list">{list}</ul>
   )

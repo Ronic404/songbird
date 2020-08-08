@@ -9,13 +9,13 @@
   margin-bottom: 30px;  
   background-color: rgba(0, 0, 0, 0.3);
 
-  &:focus {
-    outline: none;
-  }
-
   &_active {
     background-color: #009d76;
     cursor: pointer;
+
+    &:hover {
+      background-color: #02dda6;
+    }
   }
 }
 

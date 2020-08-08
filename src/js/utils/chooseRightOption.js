@@ -1,5 +1,6 @@
 import birdsData from '../data/birdsData';
 
+// export default function chooseRightOption(page, randomIndex, setRight, decreasePoints) {
 export default function chooseRightOption(page, randomIndex, setRight) {
   const list = document.querySelectorAll('.answers-list__item');
   list.forEach(item => {
@@ -9,6 +10,7 @@ export default function chooseRightOption(page, randomIndex, setRight) {
         setRight();
       } else {
         item.querySelector('.answers-list__item-marker').classList.add('answers-list__item-marker_wrong');
+        // decreasePoints();
       }
     })
   })
