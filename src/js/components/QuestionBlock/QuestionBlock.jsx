@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import birdsData from '../../data/birdsData';
 import bird from '../../../assets/images/bird.png';
@@ -14,7 +13,9 @@ export default function QuestionBlock(props) {
       <img className="question-block__image" src={url} alt="Bird" />
       <div className="question-block__description">
       <h2 className="question-block__description-title">{name}</h2>
-        <audio className="question-block__description-audio" src={birdsData[page][randomIndex].audio} controls />
+        <audio className="question-block__description-audio" src={birdsData[page][randomIndex].audio} controls>
+          <track kind="captions" />
+        </audio>  
       </div>
     </div>
   );

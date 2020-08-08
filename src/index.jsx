@@ -5,12 +5,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 import birdsData from './js/data/birdsData';
-// import favicon from './assets/images/favicon.ico';
 
 import Header from './js/components/Header/Header';
 import QuestionBlock from './js/components/QuestionBlock/QuestionBlock';
 import AnswerBlock from './js/components/AnswerBlock/AnswerBlock';
 import Button from './js/components/Button/Button';
+import Sounds from './js/components/Sounds/Sounds';
 
 import setDefaultMarkers from './js/utils/setDefaultMarkers';
 
@@ -28,6 +28,7 @@ class App extends React.Component {
       page: 0,
       randomIndex: 0,
       isRight: false,
+      endGame: false,
     }
     this.setNextPage = this.setNextPage.bind(this);    
     this.setRight = this.setRight.bind(this);    
@@ -50,13 +51,19 @@ class App extends React.Component {
   }
 
   setNextPage() {
-    const { page, isRight } = this.state;
+    const { page, isRight, endGame } = this.state;
     this.addPoints();
     if (page === 5) {
-      this.setState({ page: 0});
-      this.setState({ score: 0});
+      this.setState({ 
+        page: 0, 
+        score: 0, 
+        endGame: true
+      });
     } else {
-      this.setState({ page: page + 1, isRight: false});
+      this.setState({
+        page: page + 1, 
+        isRight: false
+      });
       setDefaultMarkers();
     }
   }
@@ -68,7 +75,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { page, score, randomIndex, isRight } = this.state;
+    const { page, score, randomIndex, isRight, endGame, points } = this.state;
     window.console.log(randomIndex)
     return (
       <>
@@ -76,6 +83,7 @@ class App extends React.Component {
         <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
         <AnswerBlock page={page} randomIndex={randomIndex} setRight={this.setRight} />
         <Button onClick={this.setNextPage} isRight={isRight} />
+        <Sounds isRight={isRight} points={points} endGame={endGame} />
       </>
     );
   }  
