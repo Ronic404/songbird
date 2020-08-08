@@ -84,6 +84,7 @@ const config = (env) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+      favicon: 'src/assets/images/favicon.ico',
     }),
     env && env.analyze ? new BundleAnalyzePlugin() : new NothingPlugin(),
     env && env.NODE_ENV === 'production' 

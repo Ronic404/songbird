@@ -2,16 +2,18 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import birdsData from '../../data/birdsData';
-// import bird from '../../../assets/images/bird.png';
+import bird from '../../../assets/images/bird.png';
 
 export default function QuestionBlock(props) {
-  const { page, randomIndex } = props;
+  const { page, randomIndex, isRight } = props;
+  const url = isRight ? birdsData[page][randomIndex].image : bird;
+  const name = isRight ? birdsData[page][randomIndex].name : '******';
 
   return (
     <div className="question-block"> 
-      <img className="question-block__image" src={birdsData[page][randomIndex].image} alt="Bird" />
+      <img className="question-block__image" src={url} alt="Bird" />
       <div className="question-block__description">
-        <h2 className="question-block__description-title">******</h2>
+      <h2 className="question-block__description-title">{name}</h2>
         <audio className="question-block__description-audio" src={birdsData[page][randomIndex].audio} controls />
       </div>
     </div>

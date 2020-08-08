@@ -5,11 +5,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 import birdsData from './js/data/birdsData';
+// import favicon from './assets/images/favicon.ico';
 
 import Header from './js/components/Header/Header';
 import QuestionBlock from './js/components/QuestionBlock/QuestionBlock';
 import AnswerBlock from './js/components/AnswerBlock/AnswerBlock';
 import Button from './js/components/Button/Button';
+
+import setDefaultMarkers from './js/utils/setDefaultMarkers';
 
 import './style.scss';
 
@@ -54,6 +57,7 @@ class App extends React.Component {
       this.setState({ score: 0});
     } else {
       this.setState({ page: page + 1, isRight: false});
+      setDefaultMarkers();
     }
   }
 
@@ -69,7 +73,7 @@ class App extends React.Component {
     return (
       <>
         <Header page={page} score={score} />
-        <QuestionBlock page={page} randomIndex={randomIndex} />
+        <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
         <AnswerBlock page={page} randomIndex={randomIndex} setRight={this.setRight} />
         <Button onClick={this.setNextPage} isRight={isRight} />
       </>
