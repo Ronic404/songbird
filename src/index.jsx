@@ -29,7 +29,7 @@ class App extends React.Component {
       page: 0,
       randomIndex: 0,
       isRight: false,
-      endGame: true,
+      endGame: false,
     }
     this.setNextPage = this.setNextPage.bind(this);    
     this.setRight = this.setRight.bind(this);    

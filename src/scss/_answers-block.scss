@@ -4,7 +4,7 @@
   padding: 20px 0;
 
   >* {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: $bg-opacity;
     border-radius: 10px;
     width: 50%;
   }
@@ -18,13 +18,13 @@
   margin-right: 20px;
 
   &__item {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid $border-color;
     padding: 10px;
     display: flex;
     align-items: center;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.3);      
+      background-color: $bg-item-hover;      
     }
 
     &:last-child {
@@ -35,15 +35,15 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $border-color;
       margin-right: 10px;
 
       &_wrong {
-        background-color: rgba(255, 0, 0, 0.7);
+        background-color: $wrong;
       }
 
       &_right {
-        background-color: rgba(0, 255, 0, 0.7);
+        background-color: $right;
       }
     }
 
@@ -71,13 +71,13 @@
       &-name {
         font-size: 2rem;
         padding: 10px 0;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 2px solid $border-color;
       }
 
       &-species {
         font-size: 1.5rem;
         padding: 5px 0;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 2px solid $border-color;
       }
 
       &-audio {

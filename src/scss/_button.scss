@@ -7,14 +7,15 @@
   font-size: 1.5rem;
   padding: 10px;
   margin-bottom: 30px;  
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: $bg-opacity;
+  transition: 0.3s;
 
   &_active {
-    background-color: #009d76;
+    background-color: $main-color;
     cursor: pointer;
 
     &:hover {
-      background-color: #02dda6;
+      background-color: $main-light-color;
     }
   }
 }

@@ -1,6 +1,7 @@
 .report {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: $bg-opacity;
   padding: 20px;
+  border-radius: 10px;
 
   &__title {
     font-size: 4rem;
@@ -25,12 +26,12 @@
     text-align: center;
     font-size: 1.5rem;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
-    background-color: #009d76;
+    background-color: $main-color;
     cursor: pointer;
+    transition: 0.3s;
 
     &:hover {
-      background-color: #02dda6;
+      background-color: $main-light-color;
     }
   }
 } 
