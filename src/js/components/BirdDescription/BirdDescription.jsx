@@ -9,7 +9,7 @@ export default function BirdDescription(props) {
   if (!isRight) {
     return (
       <div className="bird-description">
-        <p>Послушайте плеер<br />Выберите птицу из списка</p>
+        <p className="bird-description__preview">Послушайте плеер<br />Выберите птицу из списка</p>
       </div>
     )    
   }
