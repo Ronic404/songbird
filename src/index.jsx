@@ -10,7 +10,7 @@ import Header from './js/components/Header/Header';
 import QuestionBlock from './js/components/QuestionBlock/QuestionBlock';
 import AnswerBlock from './js/components/AnswerBlock/AnswerBlock';
 import Button from './js/components/Button/Button';
-import Sounds from './js/components/Sounds/Sounds';
+import WinSound from './js/components/WinSound/WinSound';
 import Report from './js/components/Report/Report';
 
 import setDefaultMarkers from './js/utils/setDefaultMarkers';
@@ -103,7 +103,7 @@ class App extends React.Component {
         <>
           <Header page={page} score={score} />
           <Report score={score} startGame={this.startGame} />
-          <Sounds isRight={isRight} points={points} endGame={endGame} />
+          <WinSound />
         </>
       )
     } 
@@ -113,7 +113,6 @@ class App extends React.Component {
         <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
         <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={this.setRight} decreasePoints={this.decreasePoints} />
         <Button onClick={this.setNextPage} isRight={isRight} />
-        <Sounds isRight={isRight} points={points} endGame={endGame} />
       </>
     );
   }

@@ -10,6 +10,9 @@ export default function AnswerBlock(props) {
     <div className="answers-block">
       <AnswersList page={page} randomIndex={randomIndex} setRight={setRight} decreasePoints={decreasePoints} />
       <BirdDescription page={page} randomIndex={randomIndex} isRight={isRight} />
+      <audio id="marker-sounds" autoPlay src=''>
+        <track kind="captions" />
+      </audio>
     </div>
   );
 }
