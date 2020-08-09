@@ -40,15 +40,15 @@ class App extends React.Component {
   componentDidMount() {
     const { page } = this.state;
     this.setState({ randomIndex: Math.floor(Math.random() * birdsData[page].length) })
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
+    // console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
   }  
 
-  componentDidUpdate(prevState) {
-    console.log('bbbbbbbbbbbbbbbb')
-    // if (this.state.page !== prevState.page) {
-    //   this.setState({ randomIndex: Math.floor(Math.random() * birdsData[this.state.page].length) })
-    // }  
-  }
+  // componentDidUpdate(prevState) {
+  //   console.log('bbbbbbbbbbbbbbbb')
+  //   // if (this.state.page !== prevState.page) {
+  //   //   this.setState({ randomIndex: Math.floor(Math.random() * birdsData[this.state.page].length) })
+  //   // }  
+  // }
 
   setRight() {
     const { isRight } = this.state;
@@ -96,13 +96,14 @@ class App extends React.Component {
 
   render() {
     const { page, score, randomIndex, isRight, endGame, points } = this.state;
-    window.console.log(randomIndex);
+    // window.console.log(randomIndex);
 
     if (endGame) {
       return (
         <>
           <Header page={page} score={score} />
           <Report score={score} startGame={this.startGame} />
+          <Sounds isRight={isRight} points={points} endGame={endGame} />
         </>
       )
     } 
