@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import React from 'react';
 import birdsData from '../../data/birdsData';
 import chooseRightOption from '../../utils/chooseRightOption';
@@ -16,7 +15,11 @@ export default function AnswersList(props) {
       <div className="answers-list__item-name">{bird.name}</div>      
     </li>
   )
-  chooseRightOption(page, randomIndex, setRight, decreasePoints);
+  
+  setTimeout(() => {
+    chooseRightOption(page, randomIndex, setRight, decreasePoints);
+  }, 0);
+  
   return (
     <ul className="answers-list">{list}</ul>
   )

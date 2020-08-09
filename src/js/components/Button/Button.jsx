@@ -12,14 +12,11 @@ export default class Button extends React.Component {
   render() {
     // const { isActive } = this.state;
     const { onClick, isRight } = this.props;
-
     let className = 'button-next-level'
-
     if (isRight === true) {
-      window.console.log(isRight)
       className += ' button-next-level_active'
     }
-
+    
     return (
       <button className={className} type="button" onClick={isRight ? onClick : null}>Next Level</button>
     )

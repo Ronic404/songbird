@@ -22,6 +22,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
+    height: 30px;
 
     &:hover {
       background-color: $bg-item-hover;      
@@ -63,6 +64,7 @@
       width: 230px;
       height: 180px;
       margin-right: 20px;
+      border-radius: 10px;
     }
 
     &-subdescription {
@@ -88,5 +90,6 @@
 
   &__bottom {
     font-size: 1.5rem;
+    margin-top: 10px;
   }
 }

@@ -3,9 +3,11 @@ import React from 'react';
 
 export default function Report(props) {
   const { score, startGame } = props;
-  const summary = score === 30 ? 'Вы не сделали ни одной ошибки' : 
-    `Вы прошли викторину и набрали ${score} из 30 возможных баллов`;
-  const buttonText = score === 30 ? 'Начать заново' : 'Попробовать ещё раз!';
+  const MAX_SCORE = 30;
+  
+  const summary = score === MAX_SCORE ? 'Вы не сделали ни одной ошибки' : 
+    `Вы прошли викторину и набрали ${score} из ${MAX_SCORE} возможных баллов`;
+  const buttonText = score === MAX_SCORE ? 'Начать заново' : 'Попробовать ещё раз!';
 
   return (
     <div className="report">

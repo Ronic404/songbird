@@ -40,7 +40,15 @@ class App extends React.Component {
   componentDidMount() {
     const { page } = this.state;
     this.setState({ randomIndex: Math.floor(Math.random() * birdsData[page].length) })
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
   }  
+
+  componentDidUpdate(prevState) {
+    console.log('bbbbbbbbbbbbbbbb')
+    // if (this.state.page !== prevState.page) {
+    //   this.setState({ randomIndex: Math.floor(Math.random() * birdsData[this.state.page].length) })
+    // }  
+  }
 
   setRight() {
     const { isRight } = this.state;
@@ -52,8 +60,6 @@ class App extends React.Component {
     this.addPoints();
     if (page === 5) {
       this.setState({ 
-        page: 0, 
-        score: 0, 
         endGame: true
       });
     } else {
@@ -67,9 +73,11 @@ class App extends React.Component {
   }
 
   startGame() {
-    const { score, endGame } = this.state;
+    const { page, score, isRight, endGame } = this.state;
     this.setState({ 
+      page: 0,
       score: 0,
+      isRight: false,
       endGame: false 
     });
   }
@@ -102,7 +110,7 @@ class App extends React.Component {
       <>
         <Header page={page} score={score} />
         <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
-        <AnswerBlock page={page} randomIndex={randomIndex} setRight={this.setRight} decreasePoints={this.decreasePoints} />
+        <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={this.setRight} decreasePoints={this.decreasePoints} />
         <Button onClick={this.setNextPage} isRight={isRight} />
         <Sounds isRight={isRight} points={points} endGame={endGame} />
       </>
@@ -110,8 +118,15 @@ class App extends React.Component {
   }
 }
 
+
 const AppWithHot = hot(module)(App);
-ReactDOM.render(<AppWithHot name="Jane" />, document.querySelector('#root'));
+ReactDOM.render(<AppWithHot />, document.querySelector('#root'));
+
+
+
+
+
+
 
 
   // componentDidUpdate(prevState) {
