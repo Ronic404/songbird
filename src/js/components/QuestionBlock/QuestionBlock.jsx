@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import birdsData from '../../data/birdsData';
 import bird from '../../../assets/images/bird.png';
 
-export default function QuestionBlock(props) {
-  const { page, randomIndex, isRight } = props;
+export default function QuestionBlock({ page, randomIndex, isRight }) {
   const url = isRight ? birdsData[page][randomIndex].image : bird;
   const name = isRight ? birdsData[page][randomIndex].name : '******';
 
@@ -19,4 +18,10 @@ export default function QuestionBlock(props) {
       </div>
     </div>
   );
+}
+
+QuestionBlock.propTypes = {
+  page: PropTypes.number.isRequired,
+  randomIndex: PropTypes.number.isRequired,
+  isRight: PropTypes.bool.isRequired,
 }

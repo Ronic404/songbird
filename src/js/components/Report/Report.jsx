@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Report(props) {
-  const { score, startGame } = props;
+export default function Report({ score, startGame }) {
   const MAX_SCORE = 30;
   
   const summary = score === MAX_SCORE ? 'Вы не сделали ни одной ошибки' : 
@@ -16,4 +15,9 @@ export default function Report(props) {
       <button className="report__button" type="button" onClick={startGame}>{buttonText}</button>
     </div>
   )
+}
+
+Report.propTypes = {
+  score: PropTypes.number.isRequired,
+  startGame: PropTypes.func.isRequired,
 }

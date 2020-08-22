@@ -12,12 +12,7 @@ export default function Button({ isRight, onClick }) {
   )  
 } 
 
-Button.defaultProps ={
-  isRight: false,
-  onClick: null,
-}
-
 Button.propTypes = {
-  isRight: PropTypes.bool,
-  onClick: PropTypes.func,
+  isRight: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 }

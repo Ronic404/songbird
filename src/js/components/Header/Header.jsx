@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import logo from '../../../assets/images/logo.svg';
 import FamilyOfBirdsList from '../FamilyOfBirdsList/FamilyOfBirdsList';
 
-export default function Header(props) {
-  const { score, page } = props;
-  
+export default function Header({ score, page }) {
   return (
     <div className="header">
       <div className="header__top">
@@ -15,4 +13,9 @@ export default function Header(props) {
       <FamilyOfBirdsList page={page}/>
     </div>
   );
+}
+
+Header.propTypes = {
+  score: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
 }

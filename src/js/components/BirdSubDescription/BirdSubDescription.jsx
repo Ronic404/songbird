@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import birdsData from '../../data/birdsData';
 
-export default function BirdSubDescription(props) {
-  const { page, randomIndex } = props;
+export default function BirdSubDescription({ page, randomIndex }) {
   return (
     <div className="bird-description__top-subdescription">
       <h3 className="bird-description__top-subdescription-name">{birdsData[page][randomIndex].name}</h3>
@@ -15,3 +14,7 @@ export default function BirdSubDescription(props) {
   )
 }
 
+BirdSubDescription.propTypes = {
+  page: PropTypes.number.isRequired,
+  randomIndex: PropTypes.number.isRequired
+}

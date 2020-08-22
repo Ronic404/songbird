@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function FamilyOfBirdsList(props) {
+export default function FamilyOfBirdsList({ page }) {
   const BIRD_FAMILY = [
     'Разминка',
     'Воробьиные',
@@ -9,17 +9,17 @@ export default function FamilyOfBirdsList(props) {
     'Певчие птицы',
     'Хищные птицы', 
     'Морские птицы'
-  ];
-
-  
+  ];  
 
   const listItems = BIRD_FAMILY.map((family, index) => {
-    const className = (index === props.page) 
+    const className = (index === page) 
       ? "family-of-birds-list__item family-of-birds-list__item_active" : "family-of-birds-list__item";
 
-    return <li className={className} key={family}>
-      {family}
-    </li>
+    return (
+      <li className={className} key={family}>
+        {family}
+      </li>
+    );
   });
 
   return (
@@ -27,4 +27,8 @@ export default function FamilyOfBirdsList(props) {
       {listItems}
     </ul>
   );
+}
+
+FamilyOfBirdsList.propTypes = {
+  page: PropTypes.number.isRequired,
 }
