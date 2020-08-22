@@ -1,25 +1,23 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Button extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // isActive: true,
-    };
+export default function Button({ isRight, onClick }) {
+  let className = 'button-next-level'
+  if (isRight === true) {
+    className += ' button-next-level_active'
   }
-
-  render() {
-    // const { isActive } = this.state;
-    const { onClick, isRight } = this.props;
-    let className = 'button-next-level'
-    if (isRight === true) {
-      className += ' button-next-level_active'
-    }
-    
-    return (
-      <button className={className} type="button" onClick={isRight ? onClick : null}>Next Level</button>
-    )
-  }  
+  
+  return (
+    <button className={className} type="button" onClick={isRight ? onClick : null}>Next Level</button>
+  )  
 } 
 
+Button.defaultProps ={
+  isRight: false,
+  onClick: null,
+}
+
+Button.propTypes = {
+  isRight: PropTypes.bool,
+  onClick: PropTypes.func,
+}

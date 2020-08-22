@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/no-access-state-in-setstate */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 import birdsData from './js/data/birdsData';
@@ -20,28 +20,17 @@ import './style.scss';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      score: 0,
-      points: 5,
-      page: 0,
-      randomIndex: 0,
-      isRight: false,
-      endGame: false,
-    }
-    this.setNextPage = this.setNextPage.bind(this);    
-    this.setRight = this.setRight.bind(this);    
-    // this.decreasePoints = this.decreasePoints.bind(this);    
-    this.startGame = this.startGame.bind(this);    
-  }
+function App() {
+  const [score, setScore] = useState(0);
+  const [points, setPoints] = useState(5);
+  const [page, setPage] = useState(0);
+  const [randomIndex, setRandomIndex] = useState(0);
+  const [isRight, setIsRight] = useState(false);
+  const [endGame, setEndGame] = useState(false);
 
-  componentDidMount() {
-    const { page } = this.state;
-    this.setState({ randomIndex: Math.floor(Math.random() * birdsData[page].length) })
-    // console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
-  }  
+  useEffect(() => {
+    setRandomIndex(Math.floor(Math.random() * birdsData[page].length));
+  })
 
   // componentDidUpdate(prevState) {
   //   console.log('bbbbbbbbbbbbbbbb')
@@ -50,36 +39,31 @@ class App extends React.Component {
   //   // }  
   // }
 
-  setRight() {
-    const { isRight } = this.state;
-    this.setState({ isRight: true });
+  const setRight = () => {
+    setIsRight(true);
   }
 
-  setNextPage() {
-    const { page, isRight, endGame, points } = this.state;
-    this.addPoints();
+  function addPoints() {
+    setScore(prev => prev + points);
+  }
+
+  const setNextPage = () => {
+    addPoints();
     if (page === 5) {
-      this.setState({ 
-        endGame: true
-      });
+      setEndGame(true)
     } else {
-      this.setState({
-        page: page + 1, 
-        isRight: false,
-        points: 5
-      });
-      setDefaultMarkers();
+      setPage(prev => prev + 1);
+      setIsRight(false);
+      setPoints(5);
+      setDefaultMarkers()
     }
   }
 
-  startGame() {
-    const { page, score, isRight, endGame } = this.state;
-    this.setState({ 
-      page: 0,
-      score: 0,
-      isRight: false,
-      endGame: false 
-    });
+  const startGame = () => {
+    setPage(0);
+    setScore(0);
+    setIsRight(false);
+    setEndGame(false);
   }
 
   // decreasePoints() {
@@ -88,58 +72,26 @@ class App extends React.Component {
   //   }));
   // }
 
-  addPoints() {
-    this.setState(prevState => ({
-      score: prevState.score + prevState.points
-    }));
-  }
-
-  render() {
-    const { page, score, randomIndex, isRight, endGame, points } = this.state;
-    // window.console.log(randomIndex);
-
-    if (endGame) {
-      return (
-        <>
-          <Header page={page} score={score} />
-          <Report score={score} startGame={this.startGame} />
-          <WinSound />
-        </>
-      )
-    } 
+  if (endGame) {
     return (
       <>
         <Header page={page} score={score} />
-        <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
-        <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={this.setRight} decreasePoints={this.decreasePoints} />
-        <Button onClick={this.setNextPage} isRight={isRight} />
+        <Report score={score} startGame={startGame} />
+        <WinSound />
       </>
-    );
-  }
+    )
+  } 
+  return (
+    <>
+      <Header page={page} score={score} />
+      <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
+      <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={setRight} />
+      {/* <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={setRight} decreasePoints={decreasePoints} /> */}
+      <Button onClick={setNextPage} isRight={isRight} />
+    </>
+  );
 }
 
 
 const AppWithHot = hot(module)(App);
 ReactDOM.render(<AppWithHot />, document.querySelector('#root'));
-
-
-
-
-
-
-
-
-  // componentDidUpdate(prevState) {
-  //   if (this.state.page !== prevState.page) {
-  //     this.setState({ randomIndex: Math.floor(Math.random() * birdsData[this.state.page].length) })
-  //   }  
-  // }
-
-  // function nameBird() {
-  //   return birdsData[this.state.page][Math.floor(Math.random() * birdsData[this.state.page].length)]
-  // }
-
-  // randomIndex() {
-  // this.setState({ aaa: Math.floor(Math.random() * birdsData[this.state.page].length) })
-  // return Math.floor(Math.random() * birdsData[this.state.page].length);
-  // }
