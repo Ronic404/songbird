@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-did-update-set-state */
-/* eslint-disable react/no-access-state-in-setstate */
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
@@ -22,7 +19,6 @@ import 'regenerator-runtime/runtime';
 
 function App() {
   const [score, setScore] = useState(0);
-  const [points, setPoints] = useState(5);
   const [page, setPage] = useState(0);
   const [randomIndex, setRandomIndex] = useState(0);
   const [isRight, setIsRight] = useState(false);
@@ -30,21 +26,15 @@ function App() {
 
   useEffect(() => {
     setRandomIndex(Math.floor(Math.random() * birdsData[page].length));
-  })
-
-  // componentDidUpdate(prevState) {
-  //   console.log('bbbbbbbbbbbbbbbb')
-  //   // if (this.state.page !== prevState.page) {
-  //   //   this.setState({ randomIndex: Math.floor(Math.random() * birdsData[this.state.page].length) })
-  //   // }  
-  // }
+  }, [page])
 
   const setRight = () => {
     setIsRight(true);
   }
 
-  function addPoints() {
-    setScore(prev => prev + points);
+  const addPoints = () => {
+    const mistakes = document.querySelectorAll('.answers-list__item-marker_wrong').length
+    setScore(prev => prev + 5 - mistakes);
   }
 
   const setNextPage = () => {
@@ -54,7 +44,6 @@ function App() {
     } else {
       setPage(prev => prev + 1);
       setIsRight(false);
-      setPoints(5);
       setDefaultMarkers()
     }
   }
@@ -65,12 +54,6 @@ function App() {
     setIsRight(false);
     setEndGame(false);
   }
-
-  // decreasePoints() {
-  //   this.setState(prevState => ({
-  //     points: prevState.points - 1
-  //   }));
-  // }
 
   if (endGame) {
     return (
@@ -86,7 +69,6 @@ function App() {
       <Header page={page} score={score} />
       <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
       <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={setRight} />
-      {/* <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={setRight} decreasePoints={decreasePoints} /> */}
       <Button onClick={setNextPage} isRight={isRight} />
     </>
   );
