@@ -23,10 +23,15 @@ function App() {
   const [randomIndex, setRandomIndex] = useState(0);
   const [isRight, setIsRight] = useState(false);
   const [endGame, setEndGame] = useState(false);
+  const [id, setId] = useState(-1);
 
   useEffect(() => {
     setRandomIndex(Math.floor(Math.random() * birdsData[page].length));
   }, [page])
+
+  const getId = i => {
+    setId(+i)
+  }
 
   const setRight = () => {
     setIsRight(true);
@@ -45,6 +50,7 @@ function App() {
       setPage(prev => prev + 1);
       setIsRight(false);
       setDefaultMarkers()
+      setId(-1);
     }
   }
 
@@ -53,6 +59,7 @@ function App() {
     setScore(0);
     setIsRight(false);
     setEndGame(false);
+    setId(-1);
   }
 
   if (endGame) {
@@ -68,7 +75,7 @@ function App() {
     <>
       <Header page={page} score={score} />
       <QuestionBlock page={page} randomIndex={randomIndex} isRight={isRight} />
-      <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={setRight} />
+      <AnswerBlock page={page} randomIndex={randomIndex} isRight={isRight} setRight={setRight} getId={getId} id={id} />
       <Button onClick={setNextPage} isRight={isRight} />
     </>
   );
