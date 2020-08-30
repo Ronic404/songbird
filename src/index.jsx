@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import birdsData from './js/data/birdsData';
 
@@ -81,6 +82,21 @@ function App() {
   );
 }
 
+function LinkError() {
+  return <h1>Неверный адрес</h1>
+}
 
-const AppWithHot = hot(module)(App);
+function CompleteApp() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route component={App} path="/" exact />
+        <Route component={LinkError} path="/*" />
+      </Switch>
+    </BrowserRouter>
+  )
+}
+
+
+const AppWithHot = hot(module)(CompleteApp);
 ReactDOM.render(<AppWithHot />, document.querySelector('#root'));
